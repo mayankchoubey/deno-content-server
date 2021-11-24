@@ -1,10 +1,7 @@
-import {getPort, getPath}  from "./utils.ts";
-
-export const PORT=getPort('SERVER_PORT', 5000);
-export const SERVE_FILE_PATH=getPath('SERVE_FILE_PATH', Deno.args[0] || './');
-export const HTTP_METHOD_GET='GET';
-export const HEADER_CONTENT_TYPE='content-type';
-export const HEADER_CONTENT_LENGTH='content-length';
+export const API_KEYS_PATH='/var/tmp/data/apiKeys.json';
+export const ENV_NO_AUTH='NO_AUTH';
+export const ENV_SERVE_PATH='SERVE_PATH';
+export const ENV_API_KEYS_PATH='API_KEYS_PATH';
 export const CONTENT_TYPE_RAW='application/octet-stream';
 export const EXTENSION_TO_CONTENT_TYPE:Record<string,string>={
     '.bin': 'application/octet-stream',
