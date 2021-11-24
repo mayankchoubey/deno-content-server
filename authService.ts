@@ -2,7 +2,7 @@ import { ENV_API_KEYS_PATH, API_KEYS_PATH, ENV_NO_AUTH } from "./consts.ts";
 
 let apiKeys:Array<string>=[];
 try {
-    apiKeys=JSON.parse(Deno.readTextFileSync(Deno.env.get(ENV_API_KEYS_PATH) || API_KEYS_PATH);
+    apiKeys=JSON.parse(Deno.readTextFileSync(Deno.env.get(ENV_API_KEYS_PATH) || API_KEYS_PATH));
 } catch(e) {}
 
 export function authorize(headers:Headers) {
