@@ -1,4 +1,4 @@
-export const SERVE_PATH = "./static/";
+export const SERVE_PATH = "./static";
 export const CONTENT_TYPE_RAW = "application/octet-stream";
 export const EXTENSION_TO_CONTENT_TYPE: Record<string, string> = {
     ".bin": "application/octet-stream",
