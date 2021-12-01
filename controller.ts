@@ -1,10 +1,31 @@
 import { authorize } from "./authService.ts";
 import { getContent } from "./fileService.ts";
 import { Status } from "https://deno.land/std/http/http_status.ts";
-import { CONTENT_TYPE_RAW as rawCT, EXTENSION_TO_CONTENT_TYPE as getCT } from "./consts.ts";
+import {
+    CONTENT_TYPE_RAW as rawCT,
+    EXTENSION_TO_CONTENT_TYPE as getCT,
+} from "./consts.ts";
 import { extname as ext } from "https://deno.land/std/path/mod.ts";
+import { log } from "./logger.ts";
 
-export async function handleRequest(req: Request): Promise<Response> {
+/** @module Controller */
+
+/** The CustomRequest interface */
+export interface CustomRequest {
+    /** Tracking ID */
+    id: string;
+    /** Original Request object */
+    req: Request;
+}
+
+/**
+ * Processes the incoming Request in two steps:
+ * 1) Checks if authorized to access the resource
+ * 2) Gets the resource
+ * A Response object is sent back to the caller.
+ */
+export async function handleRequest(request: CustomRequest): Promise<Response> {
+    const req: Request = request.req;
     const relativePath = (new URL(req.url)).pathname;
     if (!authorize(req.headers)) {
         return new Response(null, { status: Status.Unauthorized });
@@ -19,6 +40,7 @@ export async function handleRequest(req: Request): Promise<Response> {
             },
         });
     } catch (err) {
+        log.critical(`${request.id} Caught exception ${err.message}`);
         if (err instanceof Deno.errors.NotFound) {
             return new Response(null, { status: Status.NotFound });
         }

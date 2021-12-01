@@ -1,10 +1,15 @@
 import { readableStreamFromReader as makeStream } from "https://deno.land/std/streams/mod.ts";
-import { ENV_SERVE_PATH } from "./consts.ts";
+import { SERVE_PATH } from "./consts.ts";
 
-const basePath = Deno.args[0] || Deno.env.get(ENV_SERVE_PATH);
+/** @module FileService */
 
+/**
+ * Opens the given path with respect to the base path, and returns:
+ * len - The length of the file
+ * content - The stream of the file
+ */
 export async function getContent(relativePath: string) {
-    const filePath = basePath + relativePath;
+    const filePath = SERVE_PATH + relativePath;
     const fileData = await Deno.stat(filePath);
     if (!fileData.isFile) {
         throw new Deno.errors.BadResource("Directories cannot be served");

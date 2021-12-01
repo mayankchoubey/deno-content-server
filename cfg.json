@@ -1,0 +1,4 @@
+{
+    "apiKeysPath": "./test/unit/data/apiKeys.json",
+    "servePath": "./test/unit/"
+}
