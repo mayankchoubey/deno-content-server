@@ -1,4 +1,4 @@
-export async function appendId(resp: Response, id: string) {
+export function appendId(resp: Response, id: string) {
     if (!resp) {
         return;
     }
