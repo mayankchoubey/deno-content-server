@@ -1,11 +1,11 @@
 import { authorize } from "./authService.ts";
 import { getContent } from "./fileService.ts";
-import { Status } from "https://deno.land/std/http/http_status.ts";
+import { Status } from "./deps.ts";
 import {
     CONTENT_TYPE_RAW as rawCT,
     EXTENSION_TO_CONTENT_TYPE as getCT,
 } from "./consts.ts";
-import { extname as ext } from "https://deno.land/std/path/mod.ts";
+import {  ext } from "./deps.ts";
 import { log } from "./logger.ts";
 
 /** @module Controller */

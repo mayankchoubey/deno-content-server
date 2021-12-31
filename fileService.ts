@@ -1,4 +1,4 @@
-import { readableStreamFromReader as makeStream } from "https://deno.land/std/streams/mod.ts";
+import { makeStream } from "./deps.ts";
 import { SERVE_PATH } from "./consts.ts";
 
 /** @module FileService */

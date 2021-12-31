@@ -1,6 +1,6 @@
 import { API_KEYS_PATH, SERVE_PATH } from "./consts.ts";
 import { route } from "./router.ts";
-import { listenAndServe } from "https://deno.land/std/http/mod.ts";
+import { serve } from "./deps.ts";
 import { log } from "./logger.ts";
 
 async function checkAccess() {
@@ -29,4 +29,4 @@ async function checkAccess() {
 
 await checkAccess();
 log.critical("Content server started...");
-listenAndServe(":8080", route);
+serve(route, {port: 8080});

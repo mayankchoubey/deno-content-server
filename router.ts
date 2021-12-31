@@ -1,4 +1,4 @@
-import { Status } from "https://deno.land/std/http/http_status.ts";
+import { Status } from "./deps.ts";
 import { CustomRequest, handleRequest } from "./controller.ts";
 import { log } from "./logger.ts";
 import { appendId } from "./utils.ts";

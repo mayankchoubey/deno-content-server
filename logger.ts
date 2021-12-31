@@ -1,4 +1,4 @@
-import { getLogger, handlers, setup } from "https://deno.land/std/log/mod.ts";
+import { getLogger, handlers, setup } from "./deps.ts";
 
 await setup({
     handlers: {
