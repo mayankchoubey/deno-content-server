@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deno-app
+spec:
+  selector:
+    matchLabels:
+      run: deno-app
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        run: deno-app
+    spec:
+      containers:
+      - name: deno-app
+        image: deno-app:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8080
+
+
